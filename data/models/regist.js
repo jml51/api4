@@ -5,6 +5,7 @@ const registModel = database.define("anotadores", {
   email_U: {
     type: Sequelize.STRING,
     allowNull: true,
+    primaryKey: true
   },
   nome_U: {
     type: Sequelize.STRING,
@@ -12,6 +13,10 @@ const registModel = database.define("anotadores", {
   },
   pass: {
     type: Sequelize.INTEGER,
+    allowNull: false,
+  },
+  ID_anotador: {
+    type: Sequelize.INTEGER ,
     allowNull: false,
   },
 });

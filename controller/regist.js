@@ -1,7 +1,15 @@
 const registModel = require("../data/models/regist");
 
 exports.getAll = async (req, res) => {
-  const anotadores = await anotadores.findall();
+  const anotadores = await registModel.findAll();
+
+  if (anotadores) {
+		//cenario de sucesso
+		return res.json({ success: true, data: anotadores });
+	} else {
+		//cenario de erro
+		return res.json({ success: false });
+	}
 };
 
 exports.getById = async (req, res) => {
@@ -18,8 +26,9 @@ exports.getById = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { email_U, nome_U, pass } = req.body;
-  const anotadores = await anotadores.create({ email_U, nome_U, pass });
+  const { email_U, nome_U, pass, ID_anotador } = req.body;
+
+  const anotadores = await registModel.create({ email_U, nome_U, pass, ID_anotador });
 
   if (anotadores) {
     //cenario de sucesso
@@ -30,31 +39,28 @@ exports.create = async (req, res) => {
   }
 };
 
-
-
 exports.update = async (req, res) => {
-  const { email_U, nome_U, pass } = req.body;
-  const anotadores = await registModel.findByPk(email_U);
+    const { email_U, nome_U, pass, ID_anotador } = req.body;
+    const anotadores = await registModel.findByPk(email_U);
 
-  anotadores.nome_U = nome_U;
-  anotadores.pass = pass;
+    anotadores.nome_U = nome_U;
+    anotadores.pass = pass;
+    anotadores.ID_anotador = ID_anotador;
 
-  const updateRes = await anotadores.save();
-  if (updateRes) {
-    //cenario de sucesso
-    return res.json({ success: true, data: anotadores });
-  } else {
-    //cenario de erro
-    return res.json({ success: false });
-  }
+    const updateRes = await anotadores.save();
+    if (updateRes) {
+      //cenario de sucesso
+      return res.json({ success: true, data: anotadores });
+    } else {
+      //cenario de erro
+      return res.json({ success: false });
+    }
 };
-
-
 
 exports.delete = async (req, res) => {
   const { email_U } = req.body;
 
-  await proficaoModel.destroy({
+  await registModel.destroy({
     where: { id },
   });
   return res.json({ success: true });

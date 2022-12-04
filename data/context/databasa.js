@@ -1,12 +1,12 @@
 const Sequelize = require("sequelize");
 
-const pool = new Sequelize({
+const database = new Sequelize({
   host: "localhost",
-  port: "5000",
-  user: "root",
-  password: "root",
-  database: "PSI_final",
+  port: "3306",
+  username: "jose",
+  password: "8854",
+  database: "psi_final",
   dialect: "mysql",
 });
 
-module.exports = pool;
+module.exports = database;
