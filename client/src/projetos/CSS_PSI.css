@@ -1,0 +1,74 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 20% 80% auto;
+    padding: 0.5%;
+}
+
+.grid-child1{
+    background-color: rgb(243, 188, 107);
+}
+
+.grid-child2{
+    margin-left: 1%;
+    background-color: rgb(243, 188, 107);
+    
+}
+
+.grid-child2 .logouts{
+    width: 32px;
+    height: 32px;
+    margin-top: 1%;
+}
+
+.log .logouts{
+    margin-left: 95%;
+}
+
+
+.projetos{
+    background-color: rgb(243, 188, 107);
+    width: 320px;
+    height: 320px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 25px;
+    border-radius: 8px;
+
+}
+
+#up{
+    border: 2px;
+    background-color: #e7e7e7;
+    height: 160px;
+    width: 300px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border-style:double;
+
+}
+#pp{
+    margin-left: 20px;
+}
+
+h1{
+    text-align:center;
+     
+}
+
+div ul li{
+    display:inline-block;
+}
+button{
+    margin-left: 20px;
+    border-radius: 4px;
+}
+h3{
+    margin-left: 20px;
+}
+
+.bar .head {
+    display:inline-block;
+}
+
