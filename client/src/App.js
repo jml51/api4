@@ -22,6 +22,7 @@ function App() {
             <Navbar />
               <Login />
             </Route>
+            
             <Route exact path="/registo">
             <Navbar />
               <Registo />

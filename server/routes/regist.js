@@ -4,8 +4,9 @@ const controller = require("../controller/regist");
 registModel.get("/", controller.getAll);
 registModel.get("/:id", controller.getById);
 registModel.post("/create", controller.create);
+registModel.post("/register", controller.register);
+registModel.post("/login", controller.login);
 registModel.put("/update", controller.update);
-registModel.put("/register", controller.register);
 registModel.delete("/delete", controller.delete);
 
 

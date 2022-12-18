@@ -8,9 +8,7 @@ const Registo = () => {
     pass:"",
     nome_U:"",  
   });
-
   
-
   const [err, seterror] = useState(null)
 
   const handleChange =  e =>{
@@ -31,9 +29,11 @@ const Registo = () => {
   const handleSubmit = async e =>{
     e.preventDefault()
     try{
-    await Axios.post("/regist/register", inputs);
+   await Axios.post("/regist/register", inputs).then(() => {
+   });
     }catch(err){
       seterror(err.response.data);
+     
     }
   }
 
@@ -53,7 +53,7 @@ const Registo = () => {
 
     	    <label>Password</label>  
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 name="pass"
                 onChange={handleChange}
