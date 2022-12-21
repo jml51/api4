@@ -53,7 +53,6 @@ exports.login = async (req, res) => {
 
   const accessToken = sign(
     {ID_anotador: user.ID_anotador, email_U: user.email_U},  'accessToken' );
-  res.json(accessToken);
-
+    res.json(accessToken);
   });
 };

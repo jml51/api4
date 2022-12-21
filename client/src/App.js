@@ -13,9 +13,7 @@ function App() {
     <div className="App">
       <div className="content">
         <Router>
-          
-
-
+        
           <Switch>
 
             <Route exact path="/">
@@ -36,9 +34,10 @@ function App() {
               <Projetos />
             </Route>
 
-            <Route exact path="/Projetos/imagem">
+            <Route exact path="/Projetos/:ID_projeto">
               <Imagem />
             </Route>
+
 
           </Switch>
 

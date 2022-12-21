@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Axios from 'axios';
 
 const Login = () => {
@@ -11,17 +11,22 @@ const Login = () => {
 
   const [err, seterror] = useState(null)
 
+  const history = useHistory();
+
   const handleChange =  e =>{
     setinputs(prev=>({...prev, [e.target.name]: e.target.value}));
   };
 
-  const handleSubmit = async e =>{
-    e.preventDefault()
+  const handleSubmit = () =>{
+    
     
     Axios.post("/regist/login", inputs).then((response) => {
-        
+      if(response.input.error){
+        alert(response.input.error);
+      } else{
           sessionStorage.setItem("accessToken", response.inputs);
-        
+          history.push("/projetos");  
+      }   
     });
   };
 

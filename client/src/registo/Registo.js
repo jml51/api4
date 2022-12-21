@@ -16,21 +16,16 @@ const Registo = () => {
     setinputs(prev=>({...prev, [e.target.name]: e.target.value}))
     
   }
-/*
-  function BackButton() {
-    const history = useHistory();
-  }
+  const history = useHistory();
 
-  function handleBack() {
-    history.goBack();
-  }
-*/
+  
 
   const handleSubmit = async e =>{
     e.preventDefault();
     try{
       const res= await Axios.post("/regist/register", inputs)
         console.log('Register Sucessefull!!');
+        history.push('/');
         console.log(res);
     }catch(err){
       

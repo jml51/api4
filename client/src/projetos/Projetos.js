@@ -1,6 +1,6 @@
 import './CSS_PSI.css'
 import logout from './logout.ico';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useParams  } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
@@ -10,6 +10,7 @@ function Projetos  ()  {
 
 const [post, setpost] = useState([]);
 
+let history = useHistory();
 
 useEffect(() => {
     axios.get("/projeto/all").then((res) =>{
@@ -19,7 +20,7 @@ useEffect(() => {
     });
 }, []);
 
- 
+
 
 
 return (
@@ -35,13 +36,13 @@ return (
     {post?.length > 0 ? (
       post.map((value, key) => {
         return (
-          <ul>
+          <ul onClick={() => {history.push(`/Projetos/${value.ID_projeto}`)}}>
             <li className="projetos">
               <div id="up"></div>
               <div id="down">
                 <h3 key={value.titulo2}>{value.titulo}</h3>
-                <p id="pp" key={value.descriçao2}>{value.descriçao}</p>
-                <Link to="/Projetos/imagem"><button>start</button></Link>
+                <p id="pp" >{value.descriçao}</p>
+                <p id="pp" >{value.ID_projeto}</p>
               </div>
             </li>
           </ul>

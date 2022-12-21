@@ -1,4 +1,5 @@
 const projetoModel = require("../data/models/projeto");
+const apiResponse = require("../utils/apiResponse.js");
 
 exports.getAll = async (req, res) => {
   const projeto = await projetoModel.findAll();
@@ -13,16 +14,16 @@ exports.getAll = async (req, res) => {
 };
 
 exports.getById = async (req, res) => {
-  const titulo = req.params.id;
-  const projeto = await projetoModel.findByPk(titulo);
+  const ID_projeto = req.params.ID_projeto;
+	const user = await projetoModel.findByPk(ID_projeto);
 
-  if (projeto) {
-    //cenario de sucesso
-    return res.json({ success: true, data: projeto });
-  } else {
-    //cenario de erro
-    return res.json({ success: false });
-  }
+	if (user) {
+		//cenario de sucesso
+		return res.json({ success: true, data: user });
+	} else {
+		//cenario de erro
+		return res.json({ success: false });
+	}
 };
 
 exports.create = async (req, res) => {
