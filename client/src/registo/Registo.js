@@ -27,13 +27,13 @@ const Registo = () => {
 */
 
   const handleSubmit = async e =>{
-    e.preventDefault()
+    e.preventDefault();
     try{
-   await Axios.post("/regist/register", inputs).then(() => {
-   });
+      const res= await Axios.post("/regist/register", inputs)
+        console.log('Register Sucessefull!!');
+        console.log(res);
     }catch(err){
-      seterror(err.response.data);
-     
+      
     }
   }
 

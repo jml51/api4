@@ -1,4 +1,4 @@
-const registModel = require("../data/models/projeto");
+const projetoModel = require("../data/models/projeto");
 
 exports.getAll = async (req, res) => {
   const projeto = await projetoModel.findAll();
@@ -13,8 +13,8 @@ exports.getAll = async (req, res) => {
 };
 
 exports.getById = async (req, res) => {
-  const id = req.params.id;
-  const projeto = await projetoModel.findByPk(id);
+  const titulo = req.params.id;
+  const projeto = await projetoModel.findByPk(titulo);
 
   if (projeto) {
     //cenario de sucesso
@@ -26,9 +26,9 @@ exports.getById = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { email_U, nome_U, pass, ID_anotador } = req.body;
+  const { titulo, regras,  descriçao,imagem} = req.body;
 
-  const projeto = await projetoModel.create({ email_U, nome_U, pass, ID_anotador });
+  const projeto = await projetoModel.create({ titulo,descriçao,regras, imagem });
 
   if (projeto) {
     //cenario de sucesso
@@ -40,12 +40,14 @@ exports.create = async (req, res) => {
 };
 
 exports.update = async (req, res) => {
-    const { email_U, nome_U, pass, ID_anotador } = req.body;
-    const projeto = await projetoModel.findByPk(email_U);
+    const { titulo, regras,  descriçao , imagem } = req.body;
+    const projeto = await projetoModel.findByPk(titulo);
 
-    projeto.nome_U = nome_U;
-    projeto.pass = pass;
-    projeto.ID_anotador = ID_anotador;
+    projeto.titulo = titulo;
+    projeto.descriçao = descriçao;
+    projeto.imagem = imagem;
+    projeto.regras = regras;
+
 
     const updateRes = await projeto.save();
     if (updateRes) {
@@ -58,7 +60,7 @@ exports.update = async (req, res) => {
 };
 
 exports.delete = async (req, res) => {
-  const { email_U } = req.body;
+  const { titulo } = req.body;
 
   await projetoModel.destroy({
     where: { id },

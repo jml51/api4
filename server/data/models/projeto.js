@@ -2,22 +2,27 @@ const Sequelize = require("sequelize");
 const database = require("../context/databasa");
 
 const projetoModel = database.define("projeto", {
-  email_U: {
-    type: Sequelize.STRING,
+  ID_projeto: {
+    type: Sequelize.INTEGER,
     allowNull: true,
+    autoIncrement: true,
     primaryKey: true
   },
-  nome_U: {
+  descriçao: {
     type: Sequelize.STRING,
     allowNull: true,
   },
-  pass: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
+  regras: {
+    type: Sequelize.STRING,
+    allowNull: true,
   },
-  ID_anotador: {
-    type: Sequelize.INTEGER ,
-    allowNull: false,
+  imagem: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  titulo: {
+    type: Sequelize.STRING ,
+    allowNull: true,
   },
 });
 

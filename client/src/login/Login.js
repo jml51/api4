@@ -19,12 +19,9 @@ const Login = () => {
     e.preventDefault()
     
     Axios.post("/regist/login", inputs).then((response) => {
-        if(response.inputs.error){ 
-          alert(response.inputs.error);
-        }
-        else {
+        
           sessionStorage.setItem("accessToken", response.inputs);
-        }
+        
     });
   };
 
