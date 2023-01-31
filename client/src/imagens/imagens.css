@@ -1,0 +1,66 @@
+.custom-textbox {
+    width: 300px;
+    height: 30px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 6px 12px;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 20% 80% ;
+    
+    padding: 0.5%;
+  }
+  
+  .grid-child1{
+    background-color: rgb(243, 188, 107);
+  }
+  
+  .grid-child2{
+    margin-left: 1%;
+    background-color: rgb(243, 188, 107);
+    
+    
+  }
+  button {
+    top: 321px; 
+    
+    width: 100px; 
+    height: 50px; 
+   
+  
+    align-items: center; 
+    justify-content: center; 
+    font-family: Inter; 
+    font-size: 18px; 
+    line-height: 28px; 
+    color: #FFFFFFFF; 
+    background: rgb(243, 188, 107); 
+    opacity: 1; 
+    border: none; 
+    border-radius: 4px; 
+    box-shadow: 0px 4px 9px rgb(5, 5, 5), 0px 0px 2px rgb(0, 0, 0); 
+  } 
+
+
+  .img {
+    width: 300px;
+    height: 300px;
+ }
+
+  .img-holder2{
+  margin-left: 40%;
+  margin-bottom: 5%;
+  width: 300px;
+  height: 300px;
+  border: 3px black solid;
+  border-radius: 5px;
+  margin-top: 1rem;
+ }
+ 
+ .butao .atual{
+  width: 30px;
+  height: 30px;
+ }

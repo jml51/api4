@@ -1,7 +1,26 @@
 const registModel = require("../data/models/regist");
 var bcrypt = require("bcryptjs");
 const {sign} = require("jsonwebtoken");
-const cookieParser = require("cookie-parser");
+
+
+exports.update = async (req, res) => {
+  const { email_U, nome_U, pass } = req.body;
+  const anotadores = await registModel.findByPk(email_U);
+
+  anotadores.nome_U = nome_U;
+  anotadores.pass = pass;
+
+  const updateRes = await anotadores.save();
+  if (updateRes) {
+    //cenario de sucesso
+    return res.json({ success: true, data: anotadores });
+  } else {
+    //cenario de erro
+    return res.json({ success: false });
+  }
+};
+
+
 
 
 
@@ -39,20 +58,18 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   const { email_U, pass } = req.body;
 
-  const user = await registModel.findOne({
-    where:{
-    email_U: email_U,
+  const user = await registModel.findOne({where:{email_U: email_U} });
+  if(!user){ 
+     return res.json({success: false, error:"usuario nao existe"});
+  }else{
+    bcrypt.compare(pass, user.pass).then(async(match) => {
+      if (!match){
+       return res.json({success: false, error: "password errada" });
+      }else{
+        const accessToken = sign(
+          {ID_anotador: user.ID_anotador, email_U: user.email_U},  'accessToken' );
+          res.json(accessToken);
+        }
+      });
     }
-  });
-
-  if(!user) res.json({error:"usuario nao existe"});
-
-  bcrypt.compare(pass, user.pass).then(async(match) => {
-    if (!match) res.json({ error: "password errada" });
-  
-
-  const accessToken = sign(
-    {ID_anotador: user.ID_anotador, email_U: user.email_U},  'accessToken' );
-    res.json(accessToken);
-  });
 };

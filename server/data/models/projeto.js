@@ -24,6 +24,7 @@ const projetoModel = database.define("projeto", {
     type: Sequelize.STRING ,
     allowNull: true,
   },
+  
 });
 
 module.exports = projetoModel;

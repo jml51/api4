@@ -5,8 +5,7 @@ import Axios from 'axios';
 const Login = () => {
   const[inputs, setinputs] = useState({
     email_U: "",
-    pass:"",
-      
+    pass:"", 
   });
 
   const [err, seterror] = useState(null)
@@ -18,15 +17,15 @@ const Login = () => {
   };
 
   const handleSubmit = () =>{
-    
-    
     Axios.post("/regist/login", inputs).then((response) => {
-      if(response.input.error){
-        alert(response.input.error);
-      } else{
+       if(response.success == false){
+          alert(response.error)
+
+       }else{
           sessionStorage.setItem("accessToken", response.inputs);
           history.push("/projetos");  
-      }   
+        }
+        console.log(response.success)
     });
   };
 
@@ -53,13 +52,13 @@ const Login = () => {
                 onChange={handleChange}
                 required
               />
-
+            <Link to="/projetos">
               <button onClick={handleSubmit}>Entrar</button>
+              </Link>
             </form>
 
 
-            <Link className="esqueci" to="/esquece" >Esqueci-me da Password</Link> 
-            
+           
             
         </div>
      );

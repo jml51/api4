@@ -27,9 +27,9 @@ exports.getById = async (req, res) => {
 };
 
 exports.create = async (req, res) => {
-  const { titulo, regras,  descriçao,imagem} = req.body;
+  const { titulo, regras,  descriçao} = req.body;
 
-  const projeto = await projetoModel.create({ titulo,descriçao,regras, imagem });
+  const projeto = await projetoModel.create({ titulo,descriçao,regras });
 
   if (projeto) {
     //cenario de sucesso
@@ -40,9 +40,11 @@ exports.create = async (req, res) => {
   }
 };
 
-exports.update = async (req, res) => {
-    const { titulo, regras,  descriçao , imagem } = req.body;
-    const projeto = await projetoModel.findByPk(titulo);
+
+
+exports.updateBYId = async (req, res) => {
+    const { ID_projeto,titulo, regras,  descriçao , imagem } = req.body;
+    const projeto = await projetoModel.findByPk(ID_projeto);
 
     projeto.titulo = titulo;
     projeto.descriçao = descriçao;
@@ -60,11 +62,9 @@ exports.update = async (req, res) => {
     }
 };
 
-exports.delete = async (req, res) => {
-  const { titulo } = req.body;
+exports.deleteById = async (req, res) => {
+  const  ID_projeto  = req.params.ID_projeto;
 
-  await projetoModel.destroy({
-    where: { id },
-  });
+  await projetoModel.destroy({where: { ID_projeto },});
   return res.json({ success: true });
 };

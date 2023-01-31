@@ -1,0 +1,83 @@
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 20% 80% ;
+  
+  padding: 0.5%;
+}
+
+.grid-child1{
+  background-color: rgb(243, 188, 107);
+}
+
+.grid-child2{
+  margin-left: 1%;
+  background-color: rgb(243, 188, 107);
+  
+  
+}
+
+.grid-child2 .voltar{
+  width: 32px;
+  height: 32px;
+  margin-bottom: 20px;
+}
+
+.log .voltar{
+  margin-left: 95%;
+  margin-top: 1px;
+}
+
+
+  
+  .page{
+    height: 100vh;
+   
+   
+    align-items: center;
+   
+  
+  }
+  .container{
+    height: 300px;
+    width: 300px;
+    border-radius: 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+    
+  }
+  .heading{
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+   
+
+  
+  }
+  .img-holder{
+    margin: 10%;
+    width: 300px;
+    height: 300px;
+    border: 3px black solid;
+    border-radius: 5px;
+    margin-top: 1rem;
+  }
+  .img{
+    width: 300px;
+    height: 300px;
+  }
+ 
+  .label{
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+ 
+.regras{
+ align-items: center;
+ 
+}
+.final{
+  width: "100px";
+   height: "150px";
+   margin-left: 15%;
+}
